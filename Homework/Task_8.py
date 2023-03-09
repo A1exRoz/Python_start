@@ -9,7 +9,7 @@ n = int(input("Введите сколько долек на первой сто
 m = int(input("Введите сколько долек на второй стороне: "))
 k = int(input("Введите сколько хотите отломить: "))
 
-if (k % n == 0 or k % m == 0):
+if (k % n == 0 or k % m == 0) and k < m * n:
     print(n, m, k, " -> yes")
 else:
     print(n, m, k, " -> no")
