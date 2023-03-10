@@ -10,6 +10,13 @@
 
 S = int(input('Введите Сумму чисел: '))
 P = int(input('Введите Произведение чисел: '))
-x = P // S + 1 
-y = S - x
-print(x, y)
+for i in range(1001):
+    for j in range(1001):
+        if S == i + j and P == i * j:
+            print(i, j)
+
+
+# s == i + j and P == i * j
+# x = P // S + 1
+# y = S - x
+# print(x, y)
