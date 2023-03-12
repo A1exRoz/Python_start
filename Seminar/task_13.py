@@ -27,4 +27,5 @@ for i in range(N):
         global_max = local_max
         local_max = 0
 
-print(f'Колличество дней = {global_max}')
+print(f'Колличество дней = \
+      {local_max if local_max > global_max else global_max}')

@@ -10,10 +10,19 @@
 
 S = int(input('Введите Сумму чисел: '))
 P = int(input('Введите Произведение чисел: '))
-for i in range(1001):
-    for j in range(1001):
-        if S == i + j and P == i * j:
-            print(i, j)
+i = 0
+j = 0
+# for i in range(1001):
+#     for j in range(1001):
+#         if S == i + j and P == i * j:
+#             print(i, j)
+
+
+while (i + j != S) and (i * j != P):
+    i += 1 
+    j += 1
+
+print(i, j)
 
 
 # s == i + j and P == i * j

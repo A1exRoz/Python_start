@@ -23,12 +23,9 @@
 A = int(input('A = '))
 a1, a2 = 0, 1
 i = 2
-
-while last_a < A:
-    last_a = a1 + a2
-    a1 = a2
-    a2 = last_a
+while a2 < A:
+    a1, a2 = a2, a1 + a2
     i += 1
-    if last_a > A:
+    if a2 > A:
         i = -1
 print(i)
