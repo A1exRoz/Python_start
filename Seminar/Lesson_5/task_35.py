@@ -2,15 +2,17 @@
 Выведите все числа от A до B включительно, в порядке возрастания, 
 если A < B, или в порядке убывания, если A > B """
 
-def print_number(a, b):
-    if a == b:
+
+def print_numbers(a, b):
+    if a == b: # Выход из рекурсии - без этого условия программа зависнет
         return f"{a}"
     if a > b:
-        return f"{a}, {print_number(a - 1, b)}"
+        # Вычетаем 1, так как печатаем по убыванию
+        return f"{a}, {print_numbers(a - 1, b)}"
     if a < b:
-        return f"{a}, {print_number(a + 1, b)}"
+        # Добавляем 1, так как печатаем по возрастанию
+        return f"{1}, {print_numbers(a + 1, b)}"
 
 
-print(print_number(1, 15))
-print(print_number(10, 30))
-print(print_number(10, 0))
+print(print_numbers(1, 30))
+print(print_numbers(30, 1))
