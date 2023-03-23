@@ -13,7 +13,7 @@ def sum(A, B):
     if B == 0:
         return A
     else:
-        return A + sum(A, B - 1)
+        return 1 + sum(A, B - 1)
     
 A = int(input("Введите число A: "))
 B = int(input("Введите число B: "))
