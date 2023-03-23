@@ -9,12 +9,13 @@ A = 3; B = 5 -> 243 (3⁵)
 A = 2; B = 3 -> 8 
 """
 
-A = int(input("Введите число A: "))
-B = int(input("Введите число B: "))
-
 def stepen(A, B):
     if B == 1:
         return A
     else:
         return A * stepen(A, B - 1)
+    
+A = int(input("Введите число A: "))
+B = int(input("Введите число B: "))
+
 print(stepen(A, B))
