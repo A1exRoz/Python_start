@@ -13,5 +13,13 @@ first_elem = 7    #int(input("Первый элемент: "))
 raznost = 2       #int(input("Разность: "))
 length_list = 5   #int(input("Длина массива: "))
 
-for i in range(1, length_list + 1 ):
+
+# Вариант: 1
+# for i in range(1, length_list + 1 ):
+#     print(first_elem + (i - 1) * raznost, end=' ')
+
+# Вариант 2:
+i = 1
+while i < length_list:
     print(first_elem + (i - 1) * raznost, end=' ')
+    i += 1
