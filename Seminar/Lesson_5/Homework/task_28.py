@@ -9,13 +9,13 @@
 2 + 2  =  4 
 """
 
-def sum(A, B):
-    if B == 0:
-        return A
+def sum(a, b):
+    if b == 0:
+        return a
     else:
-        return 1 + sum(A, B - 1)
+        return 1 + sum(a, b - 1)
     
-A = int(input("Введите число A: "))
-B = int(input("Введите число B: "))
+a = int(input("Введите число A: "))
+b = int(input("Введите число B: "))
 
-print(sum(A, B))
+print(sum(a, b))
