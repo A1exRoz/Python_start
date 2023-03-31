@@ -12,3 +12,21 @@
 
 Ввод:                                       Вывод:
 пара-ра-рам рам-пам-папам па-ра-па-дам      Парам пам-пам"""
+
+def rifma(stih):
+    list_1 = stih.split(' ') #инфу взял тут https://tonais.ru/string/kak-razbit-stroku-python
+    for word in list_1:
+        sum = 0
+        for i in word:
+            if i in 'ауоыиэяюёе':
+                sum +=1
+            
+        
+
+
+stih = 'пара-ра-рам рам-пам-папам па-ра-па-дам'
+
+if rifma(stih):
+    print('Парам пам-пам')
+else:
+    print('Пам парам')
