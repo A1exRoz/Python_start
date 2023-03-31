@@ -21,9 +21,7 @@ print_operation_table(lambda x, y: x * y)
 
 def print_operation_table(operation, num_rows=6, num_columns=6):
     for row in range(1, num_rows):
-        
-    
-def operation()
+        for col in range(1, num_columns):
 
 
 print_operation_table(lambda x, y: x * y)
