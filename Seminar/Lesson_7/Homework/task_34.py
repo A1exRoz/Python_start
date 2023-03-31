@@ -14,9 +14,9 @@
 пара-ра-рам рам-пам-папам па-ра-па-дам      Парам пам-пам"""
 
 def rifma(stih):
-    stih = stih.split(' ') #тут мы разбиваем строку по пробелам, инфу взял тут https://kurl.ru/GIrSE
+    stih_list = stih.split(' ') #тут мы разбиваем строку по пробелам, инфу взял тут https://kurl.ru/GIrSE
     temp = []
-    for word in stih:
+    for word in stih_list:
         sum = 0
         for i in word:
             if i in 'ауоыиэяюёе':
