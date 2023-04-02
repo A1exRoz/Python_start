@@ -30,7 +30,7 @@ def input_data():
 
 
 def print_data():
-    print('Вывожу данные для Вас из 1-ого файла\n')
+    print('Вывожу данные для Вас из 1-ого файла:\n')
     with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
         data_first = file.readlines()
         data_first_version_second = []
@@ -43,7 +43,7 @@ def print_data():
         print(''.join(data_first))
         # print(*data_first, sep='')
 
-    print('Вывожу данные для Вас из 2-ого файла\n')
+    print('Вывожу данные для Вас из 2-ого файла:\n')
     with open('data_second_variant.csv', 'r', encoding='utf-8') as file:
         data_second = list(file.readlines())
         print(*data_second)
@@ -88,4 +88,4 @@ def delete_data():
         number_journal = int(input('Введите номер записи: '))
         # Можно добавить проверку, чтобы человек не выходил за пределы записи
         # ТУТ НАПИСАТЬ КОД
-        
+  
