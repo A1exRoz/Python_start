@@ -30,8 +30,8 @@ def input_data():
 
 
 def print_data():
-    print('Вывожу данные для Вас из 1-ого файла:\n')
-    with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
+    print('\nВывожу данные для Вас из 1-ого файла:\n')
+    with open('data_first_variant.csv', 'r+', encoding='utf-8') as file:
         data_first = file.readlines()
         data_first_version_second = []
         j = 0
@@ -43,10 +43,10 @@ def print_data():
         print(''.join(data_first))
         # print(*data_first, sep='')
 
-    print('Вывожу данные для Вас из 2-ого файла:\n')
-    with open('data_second_variant.csv', 'r', encoding='utf-8') as file:
+    print('\nВывожу данные для Вас из 2-ого файла:\n')
+    with open('data_second_variant.csv', 'r+', encoding='utf-8') as file:
         data_second = list(file.readlines())
-        print(*data_second)
+        print(*data_second, sep='')
     return data_first, data_second
 
 
@@ -59,10 +59,20 @@ def put_data():
         print('Ты дурак?! Даю тебе последний шанс')
         number_file = int(input('Введите номер файла: '))
 
-    if number_file == 1:  # Можно сделать нумерацию внутри файла
+    if number_file == 1:
         print("Какую именно запись по счету Вы хотите изменить?")
         number_journal = int(input('Введите номер записи: '))
-        # ТУТ НАПИСАТЬ КОД
+        print('\nМеняем:\n', data_first[number_journal-1])
+        name = name_data()
+        surname = surname_data()
+        phone = phone_data()
+        address = address_data()
+        with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
+            old_data = file.read()
+        new_data = old_data.replace(data_first[number_journal-1], f'{name};{surname};{phone};{address}\n\n')
+        with open('data_first_variant.csv', 'w') as file:
+            file.write(new_data)
+
     else:
         print("Какую именно запись по счету Вы хотите изменить?")
         number_journal = int(input('Введите номер записи: '))
