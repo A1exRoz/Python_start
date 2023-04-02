@@ -63,15 +63,16 @@ def put_data():
         print("Какую именно запись по счету Вы хотите изменить?")
         number_journal = int(input('Введите номер записи: '))
         print('\nМеняем:\n', data_first[number_journal-1])
+        data_first = data_first[number_journal-1].split('')
         name = name_data()
         surname = surname_data()
         phone = phone_data()
         address = address_data()
-        with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
-            old_data = file.read()
-        new_data = old_data.replace(data_first[number_journal-1], f'{name};{surname};{phone};{address}\n\n')
+
+
+
         with open('data_first_variant.csv', 'w') as file:
-            file.write(new_data)
+            file.write(f'{name}\n{surname}\n{phone}\n{address}\n\n')
 
     else:
         print("Какую именно запись по счету Вы хотите изменить?")
