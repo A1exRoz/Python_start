@@ -12,3 +12,22 @@
 
 Ввод:                                       Вывод:
 пара-ра-рам рам-пам-папам па-ра-па-дам      Парам пам-пам"""
+
+def rifma(stih):
+    stih_list = stih.split(' ') #тут мы разбиваем строку по пробелам, инфу взял тут https://kurl.ru/GIrSE
+    temp = []
+    for word in stih_list:
+        sum = 0
+        for i in word:
+            if i in 'ауоыиэяюёе':
+                sum +=1
+        temp.append(sum)
+    return temp.count(temp[0]) == len(temp) #смотрим сколько раз появлялся элемент в списке и сравниваем с длиной списка, узнал тут https://kurl.ru/aVUlg и тут https://kurl.ru/dmKrZ
+
+
+stih = 'пара-ра-рам рам-пам-папам па-ра-па-дам'
+
+if rifma(stih):
+    print('Парам пам-пам')
+else:
+    print('Пам парам')
