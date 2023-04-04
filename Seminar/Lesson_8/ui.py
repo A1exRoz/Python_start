@@ -8,11 +8,11 @@ def interface():
           '3. Изменить данные\n'
           '4. Вывести данные\n')
     command = int(input("Введите номер операции: "))
-    
+
     while command < 1 or command > 4:
         print('Ты дурак?! Даю тебе последний шанс')
         command = int(input("Введите номер операции: "))
-        
+
     if command == 1:
         input_data()
     elif command == 2:
@@ -21,4 +21,3 @@ def interface():
         put_data()
     else:
         print_data()
-         
