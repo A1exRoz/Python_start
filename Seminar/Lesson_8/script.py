@@ -63,19 +63,32 @@ def put_data():
         print("Какую именно запись по счету Вы хотите изменить?")
         number_journal = int(input('Введите номер записи: '))
         print('\nМеняем:\n', data_first[number_journal-1])
-        k = ''.join(data_first[number_journal-1])
-        with open('data_first_variant.csv', 'r', encoding='utf-8') as fe:
-            lines = fe.readlines()
-        with open('data_first_variant.csv', 'a', encoding='utf-8') as fe:
-            for line in lines:
-                if line.strip("\n") != k:
-                    fe.write(line)
-        name = name_data()
-        surname = surname_data()
-        phone = phone_data()
-        address = address_data()
+        if number_journal != 1:
+            start_contact = (number_journal - 1) * 6
+        else:
+            start_contact = number_journal - 1
+        print("Что именно Вы хотите изменить?\n\n"
+          "1. Имя\n"
+          "2. Фамилию\n"
+          "3. Номер телефона\n"
+          "4. Адрес\n")
+        command = int(input("Введите номер операции: "))
+        
+        while command < 1 or command > 4:
+            print('Ты дурак?! Даю тебе последний шанс')
+            command = int(input("Введите номер операции: "))
+        
+        if command == 1:
+            data_first[start_contact] = name_data()
+        elif command == 2:
+            data_first[start_contact + 1] = surname_data()
+        elif command == 3:
+            data_first[start_contact + 2] = phone_data()
+        else:
+            data_first[start_contact + 3] = address_data()
+
         with open('data_first_variant.csv', 'a', encoding='utf-8') as file:
-            file.write(f'{name}\n{surname}\n{phone}\n{address}\n\n')
+            file.write(data_first)
 
     else:
         print("Какую именно запись по счету Вы хотите изменить?")

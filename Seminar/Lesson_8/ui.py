@@ -1,4 +1,4 @@
-from sctipt import input_data, print_data, delete_data, put_data
+from script import input_data, print_data, delete_data, put_data
 
 
 def interface():
