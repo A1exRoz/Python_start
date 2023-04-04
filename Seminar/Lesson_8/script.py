@@ -87,7 +87,7 @@ def put_data():
         else:
             data_first[start_contact + 3] = address_data()
 
-        with open('data_first_variant.csv', 'a', encoding='utf-8') as file:
+        with open('data_first_variant.csv', 'w', encoding='utf-8') as file:
             file.write(data_first)
 
     else:
