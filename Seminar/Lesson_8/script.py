@@ -45,8 +45,17 @@ def print_data():
 
     print('\nВывожу данные для Вас из 2-ого файла:\n')
     with open('data_second_variant.csv', 'r+', encoding='utf-8') as file:
-        data_second = list(file.readlines())
-        print(*data_second, sep='')
+        # data_second = list(file.readlines())
+        data_second = file.readlines()
+        data_second_version_second = []
+        j = 0
+        for i in range(len(data_second)):
+            if data_second[i] == '\n' or i == len(data_second) - 1:
+                data_second_version_second.append(''.join(data_second[j:i + 1]))
+                j = i
+        data_second = data_second_version_second
+        print(''.join(data_second))
+        # print(*data_second, sep='')
     return data_first, data_second
 
 
@@ -63,8 +72,12 @@ def put_data():
         print("Какую именно запись по счету Вы хотите изменить?")
         number_journal = int(input('Введите номер записи: '))
         print('\nМеняем:\n', data_first[number_journal-1])
+        
+        with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
+            data_first = file.readlines()
+        
         if number_journal != 1:
-            start_contact = (number_journal - 1) * 6
+            start_contact = (number_journal - 1) * 5
         else:
             start_contact = number_journal - 1
         print("Что именно Вы хотите изменить?\n\n"
@@ -72,29 +85,53 @@ def put_data():
           "2. Фамилию\n"
           "3. Номер телефона\n"
           "4. Адрес\n")
-        command = int(input("Введите номер операции: "))
+        command = int(input("Введите номер из списка: "))
         
         while command < 1 or command > 4:
             print('Ты дурак?! Даю тебе последний шанс')
             command = int(input("Введите номер операции: "))
         
         if command == 1:
-            data_first[start_contact] = name_data()
+            data_first[start_contact] = name_data() + '\n'
         elif command == 2:
-            data_first[start_contact + 1] = surname_data()
+            data_first[start_contact + 1] = surname_data() + '\n'
         elif command == 3:
-            data_first[start_contact + 2] = phone_data()
+            data_first[start_contact + 2] = phone_data() + '\n'
         else:
-            data_first[start_contact + 3] = address_data()
-
+            data_first[start_contact + 3] = address_data() + '\n'
+            
         with open('data_first_variant.csv', 'w', encoding='utf-8') as file:
-            file.write(data_first)
+            file.write(''.join(data_first))
 
     else:
         print("Какую именно запись по счету Вы хотите изменить?")
         number_journal = int(input('Введите номер записи: '))
-        # ТУТ НАПИСАТЬ КОД
-
+        print('\nМеняем:\n', data_second[number_journal-1])
+        contact = data_second[number_journal-1].split(';')
+        print("Что именно Вы хотите изменить?\n\n"
+          "1. Имя\n"
+          "2. Фамилию\n"
+          "3. Номер телефона\n"
+          "4. Адрес\n")
+        command = int(input("Введите номер из списка: "))
+        
+        while command < 1 or command > 4:
+            print('Ты дурак?! Даю тебе последний шанс')
+            command = int(input("Введите номер операции: "))
+        
+        if command == 1:
+            contact[0] = '\n' + name_data()
+        elif command == 2:
+            contact[1] = surname_data()
+        elif command == 3:
+            contact[2] = phone_data()
+        else:
+            contact[3] = address_data() + '\n'
+            
+        data_second[number_journal-1] = ';'.join(contact)
+            
+        with open('data_second_variant.csv', 'w', encoding='utf-8') as file:
+            file.write(''.join(data_second))
 
 def delete_data():
     print('Из какого файла Вы хотите удалить данные?')
@@ -105,11 +142,21 @@ def delete_data():
         print('Ты дурак?! Даю тебе последний шанс')
         number_file = int(input('Введите номер файла: '))
 
-    if number_file == 1:  # Можно сделать нумерацию внутри файла
+    if number_file == 1:
         print("Какую именно запись по счету Вы хотите удалить?")
         number_journal = int(input('Введите номер записи: '))
-        # Можно добавить проверку, чтобы человек не выходил за пределы записи
-        # ТУТ НАПИСАТЬ КОД
+        print('\nУДАЛЯЕМ:\n', data_first[number_journal-1])
+        
+        with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
+            data_first = file.readlines()
+        
+        if number_journal != 1:
+            start_contact = (number_journal - 1) * 5
+        else:
+            start_contact = number_journal - 1
+            
+        
+        
     else:
         print("Какую именно запись по счету Вы хотите удалить?")
         number_journal = int(input('Введите номер записи: '))
