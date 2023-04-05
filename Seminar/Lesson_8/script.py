@@ -81,10 +81,10 @@ def put_data():
         else:
             start_contact = number_journal - 1
         print("Что именно Вы хотите изменить?\n\n"
-          "1. Имя\n"
-          "2. Фамилию\n"
-          "3. Номер телефона\n"
-          "4. Адрес\n")
+              "1. Имя\n"
+              "2. Фамилию\n"
+              "3. Номер телефона\n"
+              "4. Адрес\n")
         command = int(input("Введите номер из списка: "))
 
         while command < 1 or command > 4:
@@ -109,10 +109,10 @@ def put_data():
         print('\nМеняем:\n', data_second[number_journal-1])
         contact = data_second[number_journal-1].split(';')
         print("Что именно Вы хотите изменить?\n\n"
-          "1. Имя\n"
-          "2. Фамилию\n"
-          "3. Номер телефона\n"
-          "4. Адрес\n")
+              "1. Имя\n"
+              "2. Фамилию\n"
+              "3. Номер телефона\n"
+              "4. Адрес\n")
         command = int(input("Введите номер из списка: "))
 
         while command < 1 or command > 4:
@@ -133,6 +133,7 @@ def put_data():
         with open('data_second_variant.csv', 'w', encoding='utf-8') as file:
             file.write(''.join(data_second))
 
+
 def delete_data():
     print('Из какого файла Вы хотите удалить данные?')
     data_first, data_second = print_data()
@@ -145,22 +146,18 @@ def delete_data():
     if number_file == 1:
         print("Какую именно запись по счету Вы хотите удалить?")
         number_journal = int(input('Введите номер записи: '))
-        print('\nУДАЛЯЕМ:\n', data_first[number_journal-1])
+        # del data_first[number_journal - 1]  # не пойму почему при удалении 1го элемента вставляется пустая строка, при удалении второго все ок
+        delete_element = data_first.pop(number_journal-1)
+        print('\nУДАЛЯЕМ:\n', delete_element)
 
-        if number_journal != 1:
-
-        # with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
-        #     data_first = file.readlines()
-
-        # if number_journal != 1:
-        #     with open('data_first_variant.csv', 'w', encoding='utf-8') as file:
-        #         file.writelines(data_first[(number_journal - 1) * 5:(number_journal - 1) * 5 + 5])
-        # else:
-        #     with open('data_first_variant.csv', 'w', encoding='utf-8') as file:
-        #         file.writelines(data_first[number_journal + 4:])
+        with open('data_first_variant.csv', 'w', encoding='utf-8') as file:
+            file.write(''.join(data_first))
 
     else:
         print("Какую именно запись по счету Вы хотите удалить?")
         number_journal = int(input('Введите номер записи: '))
-        # Можно добавить проверку, чтобы человек не выходил за пределы записи
-        # ТУТ НАПИСАТЬ КОД
+        delete_element = data_second.pop(number_journal-1)
+        print('\nУДАЛЯЕМ:\n', delete_element)
+
+        with open('data_second_variant.csv', 'w', encoding='utf-8') as file:
+            file.write(''.join(data_second))
