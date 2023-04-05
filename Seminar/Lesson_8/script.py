@@ -146,9 +146,16 @@ def delete_data():
     if number_file == 1:
         print("Какую именно запись по счету Вы хотите удалить?")
         number_journal = int(input('Введите номер записи: '))
-        # del data_first[number_journal - 1]  # не пойму почему при удалении 1го элемента вставляется пустая строка, при удалении второго все ок
         delete_element = data_first.pop(number_journal-1)
         print('\nУДАЛЯЕМ:\n', delete_element)
+
+        data_first_ver_second = []
+        for item in data_first:
+            if item.startswith('\n'):
+                data_first_ver_second.append(item[1:])
+            else:
+                data_first_ver_second.append(item)
+        data_first = data_first_ver_second
 
         with open('data_first_variant.csv', 'w', encoding='utf-8') as file:
             file.write(''.join(data_first))
@@ -158,6 +165,14 @@ def delete_data():
         number_journal = int(input('Введите номер записи: '))
         delete_element = data_second.pop(number_journal-1)
         print('\nУДАЛЯЕМ:\n', delete_element)
+
+        data_second_ver_second = []
+        for item in data_second:
+            if item.startswith('\n'):
+                data_second_ver_second.append(item[1:])
+            else:
+                data_second_ver_second.append(item)
+        data_second = data_second_ver_second
 
         with open('data_second_variant.csv', 'w', encoding='utf-8') as file:
             file.write(''.join(data_second))
